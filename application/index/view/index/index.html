@@ -1,0 +1,60 @@
+{:widget('Blog/header')}
+
+<!--顶部通栏-->
+
+
+<div class="position"></div>
+
+<div class="overall">
+
+    <div class="left">
+        {foreach $date as $v}
+        <div class="xnews2">
+            <div class="pic">
+                <a target="_blank" href="{:url('Lists/index')}">
+                    <img src="{$v.pic}" alt="{$v.title}"/>
+                </a>
+            </div>
+            <div class="dec">
+                <h3><a target="_blank" href="{:url('Lists/index')}">{$v.title}</a></h3>
+                <div class="time">发布时间：{$v.time|date='Y-m-d H:i:s',###}</div>
+                <p>{$v.desc}</p>
+                <?php
+                    $keywords=$v['keywords'];
+                    $keywords=explode(' ',$keywords);
+                ?>
+                <div class="time">
+                    {foreach $keywords as $c}
+                    <a href="{:url('Lists/index',['keywords'=>$c])}">{$c}</a>
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+        {/foreach}
+        <div class="pages">
+            <div class="plist">
+                {$date->render()}
+            </div>
+        </div>
+    </div>
+
+
+    {:widget('Blog/right')}
+
+</div>
+
+
+<div class="footerd">
+    <ul>
+        <li>Copyright &#169; 2008-2016 all rights reserved 版权所有
+            <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">蜀icp备08107937号</a></li>
+    </ul>
+</div>
+
+<div style="display:none;">
+    <script src='__STATIC__/index/goto/my-65537.js' language='javascript'></script>
+    <script src="__STATIC__/index/images/js/count_zixun.js" language="JavaScript"></script>
+</div>
+
+</body>
+</html>
